@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForgeTask Nexus - Forge Your Future</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+   <link rel="stylesheet" hre="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Animated Background -->
+  <div class="bg-particles" id="particles"></div>
+  <div class="app-container"><!-- Header -->
+   <header class="header">
+    <div class="header-content">
+     <div class="logo">
+      <div class="logo-icon">
+       N
+      </div>
+      <div>
+       <div class="logo-text" id="app-title">
+        ForgeTask Nexus
+       </div>
+       <div class="tagline" id="tagline">
+        Forge Your Future, One Task at a Time
+       </div>
+      </div>
+     </div>
+     <div class="header-actions">
+      <div class="search-bar"><input type="text" class="search-input" placeholder="Search across your nexus..." id="search-input"> <span class="search-icon">🔍</span>
+      </div>
+      <div class="user-profile" onclick="toggleAccountModal()">
+       <div class="user-avatar" id="user-avatar">
+        U
+       </div><span id="username">User</span>
+      </div>
+     </div>
+    </div>
+    <div class="header-content">
+     <nav class="nav-tabs"><button class="nav-tab active" data-section="dashboard">Command Center</button> <button class="nav-tab" data-section="tasks" id="tasks-tab">Task Forge</button> <button class="nav-tab" data-section="notes" id="notes-tab">Mind Vault</button> <button class="nav-tab" data-section="focus" id="focus-tab">Focus Nexus</button> <button class="nav-tab" data-section="habits" id="habits-tab">Streak Master</button>
+     </nav>
+    </div>
+   </header><!-- Main Content -->
+   <main class="main-content"><!-- Account Setup Section -->
+    <section class="section active" id="account-setup">
+     <div class="account-setup">
+      <h2>Welcome to ForgeTask Nexus</h2>
+      <p>Set up your account to begin forging your productive future</p>
+      <div class="card" style="max-width: 500px; margin: 0 auto;">
+       <form id="account-form">
+        <div class="form-group"><label class="form-label">Username</label> <input type="text" class="form-input" id="username-input" required placeholder="Enter your username">
+        </div>
+        <div class="form-group"><label class="form-label">Email</label> <input type="email" class="form-input" id="email-input" required placeholder="Enter your email">
+        </div>
+        <div class="form-group"><label class="form-label">Preferred Streak Type</label> <select class="form-select" id="streak-type-input"> <option value="daily">Daily Warrior</option> <option value="weekly">Weekly Champion</option> <option value="monthly">Monthly Master</option> <option value="custom">Custom Forge</option> </select>
+        </div><button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;"> 🚀 Launch My Nexus </button>
+       </form>
+      </div>
+     </div>
+    </section><!-- Dashboard Section -->
+    <section class="section" id="dashboard">
+     <div class="dashboard-grid">
+      <div class="stat-card">
+       <div class="stat-header"><span class="stat-title">Tasks Forged</span>
+        <div class="stat-icon" style="background: linear-gradient(135deg, #4ecdc4, #44a08d);">
+         ⚡
+        </div>
+       </div>
+       <div class="stat-value" id="completed-tasks">
+        0
+       </div>
+       <div class="stat-subtitle">
+        Today's Victories
+       </div>
+       <div class="progress-bar">
+        <div class="progress-fill" id="task-progress" style="width: 0%"></div>
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-header"><span class="stat-title">Focus Power</span>
+        <div class="stat-icon" style="background: linear-gradient(135deg, #ff6b6b, #ee5a52);">
+         🎯
+        </div>
+       </div>
+       <div class="stat-value" id="focus-sessions">
+        0
+       </div>
+       <div class="stat-subtitle">
+        Sessions This Week
+       </div>
+       <div class="progress-bar">
+        <div class="progress-fill" style="width: 0%; background: linear-gradient(90deg, #ff6b6b, #ee5a52);"></div>
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-header"><span class="stat-title">Streak Fire</span>
+        <div class="stat-icon" style="background: linear-gradient(135deg, #ffa726, #ff9800);">
+         🔥
+        </div>
+       </div>
+       <div class="stat-value" id="habit-streak">
+        0
+       </div>
+       <div class="stat-subtitle" id="streak-type-display">
+        Days
+       </div>
+       <div class="progress-bar">
+        <div class="progress-fill" style="width: 0%; background: linear-gradient(90deg, #ffa726, #ff9800);"></div>
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-header"><span class="stat-title">Mind Vault</span>
+        <div class="stat-icon" style="background: linear-gradient(135deg, #9c27b0, #7b1fa2);">
+         🧠
+        </div>
+       </div>
+       <div class="stat-value" id="notes-count">
+        0
+       </div>
+       <div class="stat-subtitle">
+        Ideas Captured
+       </div>
+       <div class="progress-bar">
+        <div class="progress-fill" style="width: 0%; background: linear-gradient(90deg, #9c27b0, #7b1fa2);"></div>
+       </div>
+      </div>
+     </div>
+     <div class="card">
+      <div class="card-header">
+       <h2 class="card-title">⚡ Recent Nexus Activity</h2>
+      </div>
+      <div id="recent-activity">
+       <p style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 2rem;">Your productivity journey begins here! Start creating tasks, notes, and habits to see your activity.</p>
+      </div>
+     </div>
+    </section><!-- Tasks Section -->
+    <section class="section" id="tasks">
+     <div class="card">
+      <div class="card-header">
+       <h2 class="card-title" id="tasks-title">⚡ Task Forge</h2><button class="btn btn-primary" onclick="openTaskModal()">+ Forge New Task</button>
+      </div>
+      <div id="tasks-list">
+       <p style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 2rem;">No tasks in your forge yet. Create your first task to start building your productive empire!</p>
+      </div>
+     </div>
+    </section><!-- Notes Section -->
+    <section class="section" id="notes">
+     <div class="card">
+      <div class="card-header">
+       <h2 class="card-title" id="notes-title">🧠 Mind Vault</h2><button class="btn btn-primary" onclick="openNoteModal()">+ Capture Idea</button>
+      </div>
+      <div id="notes-list">
+       <p style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 2rem;">Your mind vault is empty. Start capturing your brilliant ideas and thoughts!</p>
+      </div>
+     </div>
+    </section><!-- Focus Timer Section -->
+    <section class="section" id="focus">
+     <div class="card">
+      <div class="card-header">
+       <h2 class="card-title" id="focus-title">🎯 Focus Nexus</h2>
+      </div>
+      <div class="timer-container">
+       <div class="timer-progress">
+        <div class="timer-circle" id="timer-circle">
+         <div class="timer-display" id="timer-display">
+          25:00
+         </div>
+        </div>
+       </div>
+       <div class="timer-controls"><button class="btn btn-primary" id="timer-start">🚀 Ignite Focus</button> <button class="btn btn-secondary" id="timer-pause" style="display: none;">⏸️ Pause</button> <button class="btn btn-coral" id="timer-reset">🔄 Reset</button>
+       </div>
+       <div style="margin-top: 2rem;"><select class="form-select" id="timer-mode" style="width: auto; display: inline-block;"> <option value="25">🎯 Deep Focus (25 min)</option> <option value="5">☕ Quick Break (5 min)</option> <option value="15">🌟 Power Break (15 min)</option> <option value="45">🚀 Ultra Focus (45 min)</option> </select>
+       </div>
+      </div>
+     </div>
+    </section><!-- Habits Section -->
+    <section class="section" id="habits">
+     <div class="card">
+      <div class="card-header">
+       <h2 class="card-title" id="habits-title">🔥 Streak Master</h2><button class="btn btn-primary" onclick="openHabitModal()">+ Build New Habit</button>
+      </div>
+      <div id="habits-list">
+       <p style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 2rem;">No habits in your streak arsenal yet. Add your first habit to start building unstoppable momentum!</p>
+      </div>
+     </div>
+    </section>
+   </main><!-- Footer -->
+   <footer class="footer">
+    © 2025 ForgeTask Nexus. Crafted by GlitchForge Studios.
+   </footer>
+  </div><!-- Task Modal -->
+  <div class="modal" id="task-modal">
+   <div class="modal-content">
+    <h3>⚡ Forge New Task</h3>
+    <form id="task-form">
+     <div class="form-group"><label class="form-label">Task Title</label> <input type="text" class="form-input" id="task-title-input" required placeholder="What needs to be forged?">
+     </div>
+     <div class="form-group"><label class="form-label">Description</label> <textarea class="form-textarea" id="task-description-input" placeholder="Describe your mission..."></textarea>
+     </div>
+     <div class="form-group"><label class="form-label">Priority Level</label> <select class="form-select" id="task-priority-input"> <option value="low">🟢 Low Priority</option> <option value="medium">🟡 Medium Priority</option> <option value="high">🔴 High Priority</option> </select>
+     </div>
+     <div class="form-group"><label class="form-label">Difficulty</label> <select class="form-select" id="task-difficulty-input"> <option value="easy">😊 Easy</option> <option value="medium">😐 Medium</option> <option value="hard">😤 Hard</option> </select>
+     </div>
+     <div class="form-group"><label class="form-label">Category</label> <select class="form-select" id="task-category-input"> <option value="work">💼 Work</option> <option value="personal">🏠 Personal</option> <option value="health">💪 Health</option> <option value="learning">📚 Learning</option> <option value="creative">🎨 Creative</option> </select>
+     </div>
+     <div class="form-group"><label class="form-label">Due Date</label> <input type="date" class="form-input" id="task-due-input">
+     </div>
+     <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;"><button type="button" class="btn btn-secondary" onclick="closeTaskModal()">Cancel</button> <button type="submit" class="btn btn-primary">⚡ Forge Task</button>
+     </div>
+    </form>
+   </div>
+  </div><!-- Note Modal -->
+  <div class="modal" id="note-modal">
+   <div class="modal-content">
+    <h3>🧠 Capture New Idea</h3>
+    <form id="note-form">
+     <div class="form-group"><label class="form-label">Idea Title</label> <input type="text" class="form-input" id="note-title-input" required placeholder="What's your brilliant idea?">
+     </div>
+     <div class="form-group"><label class="form-label">Content</label> <textarea class="form-textarea" id="note-content-input" style="min-height: 150px;" placeholder="Expand on your thoughts..."></textarea>
+     </div>
+     <div class="form-group"><label class="form-label">Tags</label> <input type="text" class="form-input" id="note-tags-input" placeholder="inspiration, work, ideas, breakthrough">
+     </div>
+     <div class="form-group"><label class="form-label">Category</label> <select class="form-select" id="note-category-input"> <option value="ideas">💡 Ideas</option> <option value="journal">📔 Journal</option> <option value="work">💼 Work Notes</option> <option value="personal">🏠 Personal</option> <option value="learning">📚 Learning</option> </select>
+     </div>
+     <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;"><button type="button" class="btn btn-secondary" onclick="closeNoteModal()">Cancel</button> <button type="submit" class="btn btn-primary">🧠 Capture Idea</button>
+     </div>
+    </form>
+   </div>
+  </div><!-- Habit Modal -->
+  <div class="modal" id="habit-modal">
+   <div class="modal-content">
+    <h3>🔥 Build New Habit</h3>
+    <form id="habit-form">
+     <div class="form-group"><label class="form-label">Habit Name</label> <input type="text" class="form-input" id="habit-name-input" required placeholder="What habit will you master?">
+     </div>
+     <div class="form-group"><label class="form-label">Daily Target</label> <input type="number" class="form-input" id="habit-target-input" min="1" value="1" placeholder="How many times per day?">
+     </div>
+     <div class="form-group"><label class="form-label">Category</label> <select class="form-select" id="habit-category-input"> <option value="health">💪 Health &amp; Fitness</option> <option value="learning">📚 Learning &amp; Growth</option> <option value="productivity">⚡ Productivity</option> <option value="mindfulness">🧘 Mindfulness</option> <option value="creative">🎨 Creative</option> <option value="social">👥 Social</option> </select>
+     </div>
+     <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;"><button type="button" class="btn btn-secondary" onclick="closeHabitModal()">Cancel</button> <button type="submit" class="btn btn-primary">🔥 Build Habit</button>
+     </div>
+    </form>
+   </div>
+  </div><!-- Account Modal -->
+  <div class="modal" id="account-modal">
+   <div class="modal-content">
+    <h3>👤 Account Settings</h3>
+    <form id="account-update-form">
+     <div class="form-group"><label class="form-label">Username</label> <input type="text" class="form-input" id="username-update-input" required>
+     </div>
+     <div class="form-group"><label class="form-label">Email</label> <input type="email" class="form-input" id="email-update-input" required>
+     </div>
+     <div class="form-group"><label class="form-label">Streak Type</label> <select class="form-select" id="streak-type-update-input"> <option value="daily">Daily Warrior</option> <option value="weekly">Weekly Champion</option> <option value="monthly">Monthly Master</option> <option value="custom">Custom Forge</option> </select>
+     </div>
+     <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;"><button type="button" class="btn btn-secondary" onclick="closeAccountModal()">Cancel</button> <button type="submit" class="btn btn-primary">💾 Update Profile</button>
+     </div>
+    </form>
+   </div>
+  </div>
+   <script src="script.js"></script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99506ae8b7212055',t:'MTc2MTU0OTQ4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
