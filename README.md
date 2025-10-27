@@ -66,7 +66,7 @@ Combining elegant design with powerful functionality, it offers a comprehensive 
 ---
 
 ## What Makes It Special
-ForgeTask Nexus is more than a simple to-do app — it’s a **complete productivity ecosystem**.  
+ForgeTask Nexus is more than a simple to-do app it’s a **complete productivity ecosystem**.  
 The integration of **task management**, **note-taking**, **habit tracking**, and **focus timers** creates a unified workflow that keeps you organized, motivated, and productive.  
 
 Its **space-themed visual design**, smooth animations, and responsive interactions make productivity engaging and enjoyable. Every feature is crafted to maintain your flow state and provide immediate feedback.
@@ -75,7 +75,7 @@ Its **space-themed visual design**, smooth animations, and responsive interactio
 
 ## Cross-Platform Ready
 - Works seamlessly on desktop, tablet, and mobile  
-- No installation required — open and start using instantly  
+- No installation required open and start using instantly  
 
 ---
 
@@ -87,7 +87,7 @@ Its **space-themed visual design**, smooth animations, and responsive interactio
 ---
 
 ## License
-This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.  
+This project is licensed under the **MIT License**. 
 
 You are free to **use, modify, and distribute** this software for any purpose, including commercial use, with proper attribution.
 
